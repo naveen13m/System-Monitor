@@ -5,6 +5,8 @@
 #include <regex>
 #include <string>
 
+// There is no object level data or member level data that needs to be persisted
+// within LinuxParser and hence it is defined as a namespace.
 namespace LinuxParser {
 // Paths
 const std::string kProcDirectory{"/proc/"};
@@ -26,6 +28,8 @@ int TotalProcesses();
 int RunningProcesses();
 std::string OperatingSystem();
 std::string Kernel();
+int GetNumOfProcesses(std::string key);
+std::vector<std::string> GetValuesofLine(const std::string &filepath, const std::string &key);
 
 // CPU
 enum CPUStates {
@@ -42,16 +46,17 @@ enum CPUStates {
 };
 std::vector<std::string> CpuUtilization();
 long Jiffies();
-long ActiveJiffies();
+long ActiveJiffies(const std::vector<long> &run_time);
 long ActiveJiffies(int pid);
-long IdleJiffies();
+long IdleJiffies(const std::vector<long> &run_time);
 
 // Processes
 std::string Command(int pid);
 std::string Ram(int pid);
 std::string Uid(int pid);
 std::string User(int pid);
-long int UpTime(int pid);
+long int StartTime(int pid);
+float CpuUtilization(int pid);
 };  // namespace LinuxParser
 
 #endif
