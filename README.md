@@ -2,7 +2,7 @@
 
 A system monitor built using ncurses that mimics the htop monitor.
 
-![System Monitor](images/monitor.png)
+![System Monitor](images/system_monitor.png)
 
 ## ncurses
 [ncurses](https://www.gnu.org/software/ncurses/) is a library that facilitates text-based graphical output in the terminal. This project relies on ncurses for display output.
